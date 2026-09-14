@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0813">
+  <title>For You ❤️</title>
+
+  <!-- Google Fonts: Outfit (Sans), Cormorant Garamond (Serif Display), Caveat (Handwritten) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Particles & Starfield Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Top Floating Navigation Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <button id="cat-easter-egg-btn" class="icon-btn easter-egg-trigger" aria-label="Secret Easter Egg">😺</button>
+    </div>
+
+    <!-- Progress Indicator Dots (5 screens) -->
+    <div class="progress-container">
+      <div class="progress-dot active" data-step="1"></div>
+      <div class="progress-dot" data-step="2"></div>
+      <div class="progress-dot" data-step="3"></div>
+      <div class="progress-dot" data-step="4"></div>
+      <div class="progress-dot" data-step="5"></div>
+    </div>
+
+    <div class="header-right">
+      <button id="music-btn" class="icon-btn music-toggle" aria-label="Toggle Background Music">
+        <span class="music-icon">♫</span>
+        <span class="music-waves">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Story Container -->
+  <main class="story-container">
+
+    <!-- SCREEN 1: INTRO -->
+    <section id="screen-1" class="screen active">
+      <div class="screen-content glass-card cinematic-intro">
+        <div class="sparkle-icon">✨</div>
+        <p class="intro-line line-1" id="intro-line-1">Nee nethu en kitta oru kelvi ketta...</p>
+        <p class="intro-line line-2 hidden-line" id="intro-line-2">Appove en answer sollala...</p>
+        <p class="intro-line line-3 hidden-line" id="intro-line-3">Adhukku oru simple 'yes' solli mudichidalaam nu nenakala.</p>
+        <p class="intro-line line-4 hidden-line" id="intro-line-4">Unakku en answer konjam special-ah irukkanum nu thonuchu. ❤️</p>
+        
+        <div class="intro-action hidden-line" id="intro-action">
+          <button id="start-btn" class="btn btn-primary glow-btn">
+            <span>Appo... vaa 👀</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: ONE MONTH TIMELINE -->
+    <section id="screen-2" class="screen">
+      <div class="screen-content">
+        <div class="section-header">
+          <span class="badge">Chapter 01</span>
+          <h2 class="section-title">Just one month... aana...</h2>
+          <p class="section-subtitle">Oru maasam dhaan...<br>aana indha oru maasam enakku romba different-ah pochu.</p>
+        </div>
+
+        <div class="timeline-wrapper" id="timeline-container">
+          <!-- Dynamically populated from JS config -->
+        </div>
+
+        <div class="screen-actions">
+          <button class="btn btn-primary next-screen-btn" data-target="3">
+            <span>Continue</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: INTERACTIVE HEART CARDS -->
+    <section id="screen-3" class="screen">
+      <div class="screen-content">
+        <div class="section-header">
+          <span class="badge">Chapter 02</span>
+          <h2 class="section-title">Sila vishayam sollalam...</h2>
+          <p class="section-subtitle">Cards-ah tap panni paaru... ❤️</p>
+        </div>
+
+        <!-- Interactive Question Cards -->
+        <div class="cards-grid" id="reasons-cards-container">
+          <!-- Dynamically populated from JS config -->
+        </div>
+
+        <div class="screen-actions">
+          <button class="btn btn-secondary prev-screen-btn" data-target="2">← Back</button>
+          <button class="btn btn-primary next-screen-btn" data-target="4">
+            <span>Innum irukku...</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: CHAPTER 03 & THE LETTER -->
+    <section id="screen-4" class="screen">
+      <div class="screen-content letter-screen-content">
+        <div class="section-header">
+          <span class="badge">Chapter 03</span>
+          <div class="chapter-intro-lines">
+            <p class="letter-intro-line" id="let-line-1">Seri... ivlo neram naan pesiten.</p>
+            <p class="letter-intro-line hidden-line" id="let-line-2">En mind-la irundhadhellam konjam konjam-ah un kitta solliten.</p>
+            <p class="letter-intro-line hidden-line" id="let-line-3">Aana... oru vaarthai mattum innum sollala.</p>
+            <p class="letter-intro-line line-highlight hidden-line" id="let-line-4">Adhu dhaan... nee nethu ketta kelvikkana ennoda real answer.</p>
+          </div>
+        </div>
+
+        <!-- Envelope Interactive Graphic -->
+        <div class="envelope-wrapper hidden-line" id="envelope-wrapper">
+          <div class="envelope" id="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="envelope-heart">💌</div>
+            <div class="envelope-paper-preview"></div>
+          </div>
+          <button id="open-envelope-btn" class="btn btn-primary pulse-btn">
+            <span>Idha open panna ready-ah? ❤️</span>
+          </button>
+        </div>
+
+        <!-- Opened Letter Modal View -->
+        <div class="letter-modal hidden-modal" id="letter-modal">
+          <div class="glass-card letter-paper">
+            <div class="letter-stamp">❤️</div>
+            <div class="letter-body handwritten" id="typewriter-text">
+              <!-- Animated typewriter text injected here -->
+            </div>
+            <div class="letter-footer">
+              <button id="close-letter-btn" class="btn btn-primary font-sans">
+                Close the letter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: FINAL REVEAL & YES/NO CHOICE -->
+    <section id="screen-5" class="screen">
+      <div class="screen-content reveal-screen-content">
+
+        <!-- Stage A: Countdown & Intro Question -->
+        <div id="reveal-stage-countdown" class="reveal-stage">
+          <p class="reveal-line line-ask" id="reveal-ask">Nethu nee ketta...</p>
+          <p class="reveal-line line-quote hidden-line" id="reveal-quote">"Enna choose pannuriya?"</p>
+          <p class="reveal-line line-so hidden-line" id="reveal-so">Ippo... naan unakku oru answer kudukkanum.</p>
+          
+          <div class="countdown-display hidden-line" id="countdown-num">3</div>
+        </div>
+
+        <!-- Stage B: YES / NO Question Choice Box (Initial Stage of Screen 5) -->
+        <div id="reveal-stage-choice" class="reveal-stage hidden-stage">
+          <div class="glass-card choice-question-card" id="choice-question-box">
+            <p class="choice-question-title">Appo... namma rendu perum sendhu<br>indha story-ah start pannalama? ❤️</p>
+            
+            <div class="choice-buttons-row" id="choice-buttons-row">
+              <button id="yes-choice-btn" class="btn btn-primary choice-btn glow-btn">
+                YES ❤️
+              </button>
+              <button id="no-choice-btn" class="btn btn-secondary choice-btn escape-no-btn">
+                NO 🙈
+              </button>
+            </div>
+
+            <!-- Playful Toast Message when NO button moves away -->
+            <div id="no-escape-toast" class="escape-toast-msg hidden-line"></div>
+          </div>
+        </div>
+
+        <!-- Stage C: Grand Cinematic YES Reveal Stage (Appears AFTER YES is pressed) -->
+        <div id="reveal-stage-cinematic" class="reveal-stage hidden-stage">
+          <div class="heartbeat-ring"></div>
+
+          <!-- Intro lines after YES tap -->
+          <div id="cinematic-intro-box" class="cinematic-intro-box">
+            <p class="cinematic-sub-p" id="cinematic-okay">Okay...</p>
+            <p class="cinematic-sub-p hidden-line" id="cinematic-got">You got your answer. ❤️</p>
+          </div>
+
+          <!-- Giant Glowing YES -->
+          <h1 class="yes-headline glow-text hidden-line" id="cinematic-yes-title">YES. ❤️</h1>
+          
+          <!-- Sequential Story Message Lines -->
+          <div class="final-message-box glass-card hidden-line" id="final-message-box">
+            <!-- Injected dynamically in script.js -->
+          </div>
+
+          <!-- Final Ending & Signature -->
+          <div class="final-ending-box hidden-line" id="final-ending-box">
+            <h2 class="ending-headline">Chapter 01 starts now. 😺❤️</h2>
+            <p class="ending-ready-text">Ready ah?</p>
+            
+            <div class="signature-line" id="final-signature">
+              — Yours, <span id="signature-name"></span>
+            </div>
+
+            <div class="final-actions" style="margin-top: 15px;">
+              <button id="replay-btn" class="btn btn-secondary">
+                <span>Replay Our Story 🔄</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SECRET CAT EASTER EGG TOAST/MODAL -->
+  <div id="easter-egg-modal" class="toast-modal hidden-modal">
+    <div class="glass-card toast-card">
+      <div class="toast-cat">😺</div>
+      <p class="toast-text" id="easter-egg-text">Psst... he was nervous making this. 👀😂</p>
+      <button id="close-toast-btn" class="btn btn-small">Aww ❤️</button>
+    </div>
+  </div>
+
+  <!-- Background Audio Player Element -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/our-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
