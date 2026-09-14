@@ -185,10 +185,6 @@ function initApp() {
   setupEventListeners();
   updateProgressDots(1);
 
-  // Set signature name
-  const nameEl = document.getElementById("signature-name");
-  if (nameEl) nameEl.textContent = config.myName;
-
   // Trigger Screen 1 Intro Sequence
   triggerScreen1Intro();
 }
