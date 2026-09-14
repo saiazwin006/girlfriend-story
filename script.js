@@ -7,7 +7,7 @@
    -------------------------------------------------------------------------- */
 const config = {
   herName: "Her Name",
-  myName: "My Name",
+  myName: "Ashuuuuu ❤️",
   dateWeMet: "One Month Ago",
 
   // Timeline (Screen 2) - Text-based moments
